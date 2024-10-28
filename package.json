@@ -1,0 +1,17 @@
+{
+  "name": "sb",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "turbo format"
+  },
+  "devDependencies": {
+    "turbo": "2.2.3"
+  },
+  "packageManager": "pnpm@9.12.2",
+  "engines": {
+    "node": ">=22"
+  }
+}
