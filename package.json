@@ -5,9 +5,13 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "turbo format"
+    "format": "turbo format",
+    "ts": "turbo ts",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "husky": "9.1.6",
+    "lint-staged": "15.2.10",
     "turbo": "2.2.3"
   },
   "packageManager": "pnpm@9.12.2",

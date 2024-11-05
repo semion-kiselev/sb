@@ -1,0 +1,1 @@
+pnpm run ts && ./node_modules/.bin/lint-staged --cwd apps/server
