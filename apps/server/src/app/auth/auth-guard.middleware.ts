@@ -30,7 +30,7 @@ export const authGuard = (requiredPermissions: Permission[]) =>
       permissions: payload.permissions,
     };
 
-    const userTokenExpiredTime = getUserTokenExpirationTime(user.id);
+    const userTokenExpiredTime = getUserTokenExpirationTime(c.var.db, user.id);
 
     if (userTokenExpiredTime && payload.iat <= userTokenExpiredTime) {
       raiseUnauthorized();

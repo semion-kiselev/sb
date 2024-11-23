@@ -23,7 +23,7 @@ export const updateUser = async (
   }
 
   const hashedPassword = password
-    ? await bcrypt.hash(password, process.env.SALT_ROUNDS)
+    ? await bcrypt.hash(password, Number(process.env.SALT_ROUNDS))
     : undefined;
 
   return db.transaction(() => {
@@ -51,7 +51,7 @@ export const updateUser = async (
 
     let currentPermissions: string[] = [];
     if (!permissions) {
-      currentPermissions = getUserPermissions(id);
+      currentPermissions = getUserPermissions(db, id);
     }
 
     return normalizeUser({

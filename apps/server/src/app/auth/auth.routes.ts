@@ -27,7 +27,7 @@ auth.post(
     const signToken = (payload: TokenPayloadBase) =>
       sign({ ...payload, exp, iat }, ACCESS_TOKEN_SECRET);
 
-    const { token } = await login(payload, raiseUnauthorized, signToken);
+    const { token } = await login(c.var.db, payload, raiseUnauthorized, signToken);
     return c.json({ token });
   }
 );

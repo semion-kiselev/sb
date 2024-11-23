@@ -1,4 +1,4 @@
-import { db } from "db/connection.js";
+import type { Database } from "better-sqlite3";
 
 const getUserPermissionsSql = `
   SELECT json_group_array(ep.permission_id) as permissions
@@ -7,8 +7,7 @@ const getUserPermissionsSql = `
     WHERE id = ?
 `;
 
-export const getUserPermissions = (userId: number) => {
-  const result = db.prepare<number, { permissions: string[] }>(getUserPermissionsSql).get(userId);
-  console.log({ result });
-  return result ? result.permissions : [];
+export const getUserPermissions = (db: Database, userId: number) => {
+  const result = db.prepare<number, { permissions: string }>(getUserPermissionsSql).get(userId);
+  return result ? JSON.parse(result.permissions) : [];
 };

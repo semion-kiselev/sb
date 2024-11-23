@@ -1,3 +1,4 @@
+import type { Database } from "better-sqlite3";
 import { getUserByCredentials } from "domain/users/users.services/get-user-by-credentials";
 import { login } from "./login";
 
@@ -18,7 +19,7 @@ describe("login", () => {
     });
     const signToken = () => Promise.resolve(token);
 
-    const result = login(payload, raiseNotAuthorized, signToken);
+    const result = login({} as Database, payload, raiseNotAuthorized, signToken);
     expect(result).rejects.toThrow(error);
   });
 
@@ -40,7 +41,7 @@ describe("login", () => {
     });
     const signToken = () => Promise.resolve(token);
 
-    const result = login(payload, raiseNotAuthorized, signToken);
+    const result = login({} as Database, payload, raiseNotAuthorized, signToken);
     const expectedResult = { token };
     expect(result).resolves.toEqual(expectedResult);
   });

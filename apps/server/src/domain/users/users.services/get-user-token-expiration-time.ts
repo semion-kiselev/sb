@@ -1,8 +1,8 @@
-import { db } from "db/connection.js";
+import type { Database } from "better-sqlite3";
 
 const getUserTokenExpirationTimeSql = `SELECT token_expired_at FROM employee WHERE id = ?`;
 
-export const getUserTokenExpirationTime = (userId: number) => {
+export const getUserTokenExpirationTime = (db: Database, userId: number) => {
   const result = db
     .prepare<number, { token_expired_at: string }>(getUserTokenExpirationTimeSql)
     .get(userId);

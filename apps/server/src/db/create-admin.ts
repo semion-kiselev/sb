@@ -8,7 +8,10 @@ if (!process.env.DB_ADMIN_PASSWORD || !process.env.SALT_ROUNDS) {
 
 const dbPath = resolve(import.meta.dirname, "./users.db");
 const db = new Database(dbPath);
-const hashedPassword = await bcrypt.hash(process.env.DB_ADMIN_PASSWORD, process.env.SALT_ROUNDS);
+const hashedPassword = await bcrypt.hash(
+  process.env.DB_ADMIN_PASSWORD,
+  Number(process.env.SALT_ROUNDS)
+);
 
 db.transaction(() => {
   const adminResult = db
