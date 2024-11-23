@@ -1,5 +1,20 @@
 import { omit, toCamelCase } from "domain/@shared/utils/lib.js";
 import { type User, type UserWithPermissionsFromDb } from "domain/users/users.types.js";
 
-export const normalizeUser = (user: UserWithPermissionsFromDb) =>
-  toCamelCase(omit(user, ["token_expired_at", "password"])) as User;
+type NormalizeUserParams = {
+  omitCredProps?: boolean;
+};
+
+export const normalizeUser = (
+  user: UserWithPermissionsFromDb,
+  { omitCredProps = true }: NormalizeUserParams = {}
+) => {
+  const omittedUser = omitCredProps ? omit(user, ["token_expired_at", "password"]) : user;
+
+  const userWithPermissions = {
+    ...omittedUser,
+    permissions: JSON.parse(omittedUser.permissions),
+  };
+
+  return toCamelCase(userWithPermissions) as User;
+};

@@ -28,7 +28,7 @@ export type UserWithPermissionsFromDb = {
   created_at: string;
   updated_at: string;
   token_expired_at: string;
-  permissions: string[];
+  permissions: string; // json array
 };
 
 export type CreateUserPayload = z.infer<typeof CreateUserPayloadSchema>;

@@ -5,8 +5,11 @@ import { users } from "app/users/users.routes.js";
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { getReasonPhrase } from "http-status-codes";
+import { dbConnectionMiddleware } from "./db/db-connection.middleware";
 
 export const app = new Hono<{ Variables: EnvVariables }>();
+
+app.use(dbConnectionMiddleware);
 
 app.route("/auth", auth);
 app.route("/users", users);

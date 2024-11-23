@@ -7,8 +7,9 @@ import type { TokenPayloadBase } from "domain/auth/auth.types.js";
 import { Hono } from "hono";
 import { sign } from "hono/jwt";
 import { validator } from "hono/validator";
+import type { EnvVariables } from "../@shared/types/env";
 
-export const auth = new Hono();
+export const auth = new Hono<{ Variables: EnvVariables }>();
 
 auth.post(
   "/login",
@@ -36,7 +37,7 @@ auth.post(
   validator("json", (value) => applyValidation(value, LogoutSchema)),
   async (c) => {
     const { id } = c.req.valid("json");
-    logout({ id });
+    logout(c.var.db, { id });
     return c.json({ ok: true });
   }
 );

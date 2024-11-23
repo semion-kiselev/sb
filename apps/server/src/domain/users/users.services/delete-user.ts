@@ -1,8 +1,8 @@
-import { db } from "db/connection";
+import type { Database } from "better-sqlite3";
 
-const deleteUserSql = "DELETE FROM employee WHERE id = $1";
+const deleteUserSql = "DELETE FROM employee WHERE id = ?";
 
-export const deleteUser = (id: number, raiseNotFound: () => never) => {
+export const deleteUser = (db: Database, id: number, raiseNotFound: () => never) => {
   const { changes } = db.prepare<number>(deleteUserSql).run(id);
 
   if (changes === 0) {

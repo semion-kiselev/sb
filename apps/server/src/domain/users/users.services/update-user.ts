@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { db } from "db/connection";
+import type { Database } from "better-sqlite3";
 import { getUpdateSqlWithValues } from "domain/@shared/utils/sql";
 import { getUserPermissions } from "domain/users/users.services/get-user-permissions";
 import type { UpdateUserPayload, UserFromDb } from "domain/users/users.types";
@@ -13,6 +13,7 @@ const addUserPermissionsSql =
   "INSERT INTO employee_permission (employee_id, permission_id) VALUES (?, ?)";
 
 export const updateUser = async (
+  db: Database,
   id: number,
   { name, email, password, permissions }: UpdateUserPayload,
   raiseNotFound: () => never
@@ -55,7 +56,7 @@ export const updateUser = async (
 
     return normalizeUser({
       ...updatedUser,
-      permissions: permissions || currentPermissions,
+      permissions: JSON.stringify(permissions || currentPermissions),
     });
   })();
 };

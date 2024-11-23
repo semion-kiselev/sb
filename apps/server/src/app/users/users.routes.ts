@@ -11,14 +11,15 @@ import { getUsers } from "domain/users/users.services/get-users";
 import { updateUser } from "domain/users/users.services/update-user";
 import { Hono } from "hono";
 import { validator } from "hono/validator";
+import type { EnvVariables } from "../@shared/types/env";
 
-export const users = new Hono();
+export const users = new Hono<{ Variables: EnvVariables }>();
 
 users.on("GET", "*", authGuard([Permission.UR]));
 users.on(["POST", "PUT", "PATCH", "DELETE"], "*", authGuard([Permission.UR, Permission.UM]));
 
 users.get("/", (c) => {
-  const users = getUsers();
+  const users = getUsers(c.var.db);
   return c.json(users);
 });
 
@@ -29,7 +30,7 @@ users.get(
   ),
   (c) => {
     const { id } = c.req.valid("param");
-    const user = getUser(id, raiseNotFound);
+    const user = getUser(c.var.db, id, raiseNotFound);
     return c.json(user);
   }
 );
@@ -39,7 +40,7 @@ users.post(
   validator("json", (value) => applyValidation(value, CreateUserPayloadSchema)),
   async (c) => {
     const payload = c.req.valid("json");
-    const user = await createUser(payload);
+    const user = await createUser(c.var.db, payload);
     return c.json(user);
   }
 );
@@ -53,7 +54,7 @@ users.put(
   async (c) => {
     const { id } = c.req.valid("param");
     const payload = c.req.valid("json");
-    const user = await updateUser(id, payload, raiseNotFound);
+    const user = await updateUser(c.var.db, id, payload, raiseNotFound);
     return c.json(user);
   }
 );
@@ -65,7 +66,7 @@ users.delete(
   ),
   (c) => {
     const { id } = c.req.valid("param");
-    const result = deleteUser(id, raiseNotFound);
+    const result = deleteUser(c.var.db, id, raiseNotFound);
     return c.json(result);
   }
 );

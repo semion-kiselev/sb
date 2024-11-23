@@ -1,6 +1,6 @@
-import { db } from "db/connection.js";
-import { toCamelCase } from "domain/@shared/utils/lib.js";
+import type { Database } from "better-sqlite3";
 import type { User, UserWithPermissionsFromDb } from "domain/users/users.types.js";
+import { normalizeUser } from "../users.utils";
 
 const getUsersSql = `
   SELECT id, name, email, created_at, updated_at, json_group_array(ep.permission_id) as permissions
@@ -9,8 +9,7 @@ const getUsersSql = `
     GROUP BY id, name, email, created_at, updated_at;
 `;
 
-export const getUsers = () => {
-  const result = db.prepare<unknown[], UserWithPermissionsFromDb>(getUsersSql).all();
-  console.log({ result });
-  return result.map(toCamelCase) as User[];
+export const getUsers = (db: Database) => {
+  const users = db.prepare<unknown[], UserWithPermissionsFromDb>(getUsersSql).all();
+  return users.map((user) => normalizeUser(user)) as User[];
 };
