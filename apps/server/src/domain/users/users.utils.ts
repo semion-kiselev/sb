@@ -6,14 +6,19 @@ type NormalizeUserParams = {
 };
 
 export const normalizeUser = (
-  user: UserWithPermissionsFromDb,
+  user:
+    | UserWithPermissionsFromDb
+    | (Omit<UserWithPermissionsFromDb, "permissions"> & { permissions: string[] }),
   { omitCredProps = true }: NormalizeUserParams = {}
 ) => {
   const omittedUser = omitCredProps ? omit(user, ["token_expired_at", "password"]) : user;
 
   const userWithPermissions = {
     ...omittedUser,
-    permissions: JSON.parse(omittedUser.permissions),
+    permissions:
+      typeof omittedUser.permissions === "string"
+        ? JSON.parse(omittedUser.permissions)
+        : omittedUser.permissions,
   };
 
   return toCamelCase(userWithPermissions) as User;

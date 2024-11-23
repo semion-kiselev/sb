@@ -56,7 +56,7 @@ export const updateUser = async (
 
     return normalizeUser({
       ...updatedUser,
-      permissions: JSON.stringify(permissions || currentPermissions),
+      permissions: permissions || currentPermissions,
     });
   })();
 };
