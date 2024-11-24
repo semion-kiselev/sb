@@ -1,6 +1,6 @@
 import type { Database } from "better-sqlite3";
-import { createTestDb } from "../../../db/create-test-db.js";
-import { createUser } from "./create-user.js";
+import { createTestDb } from "db/create-test-db.js";
+import { createUser } from "domain/users/users.services/create-user.js";
 
 describe("create-user", () => {
   let db: Database;

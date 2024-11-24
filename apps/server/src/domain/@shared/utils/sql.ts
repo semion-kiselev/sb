@@ -7,7 +7,7 @@ export const getUpdateSqlWithValues = (
   const values: unknown[] = [];
 
   const updateString = Object.entries(keyValueMap)
-    .filter((value) => typeof value !== "undefined")
+    .filter(([, value]) => typeof value !== "undefined")
     .map(([key, value]) => {
       if (value === "datetime()") {
         return `${key}=${value}`;

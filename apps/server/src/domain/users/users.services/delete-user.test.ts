@@ -1,7 +1,7 @@
 import type { Database } from "better-sqlite3";
-import { createTestDb } from "../../../db/create-test-db.js";
-import { insertUserPermissions } from "../../@shared/utils/sql";
-import { deleteUser } from "./delete-user.js";
+import { createTestDb } from "db/create-test-db.js";
+import { insertUserPermissions } from "domain/@shared/utils/sql.js";
+import { deleteUser } from "domain/users/users.services/delete-user.js";
 
 describe("delete-user", () => {
   let db: Database;

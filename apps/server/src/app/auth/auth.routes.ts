@@ -1,13 +1,13 @@
 import { raiseServerError, raiseUnauthorized } from "app/@shared/errors/main.js";
+import type { EnvVariables } from "app/@shared/types/env.js";
 import { applyValidation } from "app/@shared/utils/apply-validation.js";
 import { LoginSchema, LogoutSchema } from "domain/auth/auth.schemas.js";
-import { login } from "domain/auth/auth.services/login";
-import { logout } from "domain/auth/auth.services/logout";
+import { login } from "domain/auth/auth.services/login.js";
+import { logout } from "domain/auth/auth.services/logout.js";
 import type { TokenPayloadBase } from "domain/auth/auth.types.js";
 import { Hono } from "hono";
 import { sign } from "hono/jwt";
 import { validator } from "hono/validator";
-import type { EnvVariables } from "../@shared/types/env";
 
 export const auth = new Hono<{ Variables: EnvVariables }>();
 
@@ -37,7 +37,7 @@ auth.post(
   validator("json", (value) => applyValidation(value, LogoutSchema)),
   async (c) => {
     const { id } = c.req.valid("json");
-    logout(c.var.db, { id });
-    return c.json({ ok: true });
+    const result = logout(c.var.db, { id });
+    return c.json(result);
   }
 );

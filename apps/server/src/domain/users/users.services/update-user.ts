@@ -1,9 +1,9 @@
 import bcrypt from "bcrypt";
 import type { Database } from "better-sqlite3";
-import { getUpdateSqlWithValues } from "domain/@shared/utils/sql";
-import { getUserPermissions } from "domain/users/users.services/get-user-permissions";
-import type { UpdateUserPayload, UserFromDb } from "domain/users/users.types";
-import { normalizeUser } from "domain/users/users.utils";
+import { getUpdateSqlWithValues } from "domain/@shared/utils/sql.js";
+import { getUserPermissions } from "domain/users/users.services/get-user-permissions.js";
+import type { UpdateUserPayload, UserFromDb } from "domain/users/users.types.js";
+import { normalizeUser } from "domain/users/users.utils.js";
 
 const updateUserSql = "UPDATE employee SET %s WHERE id = ? RETURNING *";
 

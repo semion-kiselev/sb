@@ -1,6 +1,6 @@
-import { getPermissions } from "domain/permissions/permissions.services/get-permissions";
+import type { EnvVariables } from "app/@shared/types/env.js";
+import { getPermissions } from "domain/permissions/permissions.services/get-permissions.js";
 import { Hono } from "hono";
-import type { EnvVariables } from "../@shared/types/env";
 
 export const permissions = new Hono<{ Variables: EnvVariables }>();
 

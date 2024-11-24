@@ -2,9 +2,9 @@ import bcrypt from "bcrypt";
 import type { Database } from "better-sqlite3";
 import { createTestDb } from "db/create-test-db.js";
 import { omit } from "domain/@shared/utils/lib.js";
-import { insertUserPermissions } from "domain/@shared/utils/sql";
-import type { UserFromDb } from "../users.types.js";
-import { updateUser } from "./update-user.js";
+import { insertUserPermissions } from "domain/@shared/utils/sql.js";
+import { updateUser } from "domain/users/users.services/update-user.js";
+import type { UserFromDb } from "domain/users/users.types.js";
 
 describe("update-user", () => {
   let db: Database;

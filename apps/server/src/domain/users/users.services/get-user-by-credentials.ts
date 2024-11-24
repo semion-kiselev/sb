@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import type { Database } from "better-sqlite3";
 import type { User, UserWithPermissionsFromDb } from "domain/users/users.types.js";
-import { normalizeUser } from "../users.utils";
+import { normalizeUser } from "domain/users/users.utils.js";
 
 const getUserByCredentialsSql = `
   SELECT id, name, password, email, created_at, updated_at, json_group_array(ep.permission_id) as permissions

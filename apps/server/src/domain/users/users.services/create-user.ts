@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
 import type { Database } from "better-sqlite3";
-import type { CreateUserPayload, UserFromDb } from "domain/users/users.types";
-import { normalizeUser } from "domain/users/users.utils";
-import { insertUserPermissions } from "../../@shared/utils/sql";
+import { insertUserPermissions } from "domain/@shared/utils/sql.js";
+import type { CreateUserPayload, UserFromDb } from "domain/users/users.types.js";
+import { normalizeUser } from "domain/users/users.utils.js";
 
 const createUserSql = `
   INSERT INTO employee (name, email, password)

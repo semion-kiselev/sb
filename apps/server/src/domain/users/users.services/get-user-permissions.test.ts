@@ -1,7 +1,7 @@
 import type { Database } from "better-sqlite3";
 import { createTestDb } from "db/create-test-db.js";
 import { insertUserPermissions } from "domain/@shared/utils/sql.js";
-import { getUserPermissions } from "domain/users/users.services/get-user-permissions";
+import { getUserPermissions } from "domain/users/users.services/get-user-permissions.js";
 
 describe("get-user-permissions", () => {
   let db: Database;

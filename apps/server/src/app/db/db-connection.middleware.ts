@@ -1,6 +1,6 @@
-import { db } from "db/connection";
+import type { EnvVariables } from "app/@shared/types/env.js";
+import { db } from "db/connection.js";
 import { createMiddleware } from "hono/factory";
-import type { EnvVariables } from "../@shared/types/env";
 
 export const dbConnectionMiddleware = createMiddleware<{ Variables: EnvVariables }>(
   async (c, next) => {

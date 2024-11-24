@@ -1,17 +1,17 @@
 import { raiseNotFound } from "app/@shared/errors/main.js";
+import type { EnvVariables } from "app/@shared/types/env.js";
 import { applyValidation } from "app/@shared/utils/apply-validation.js";
 import { authGuard } from "app/auth/auth-guard.middleware.js";
 import { UserIdParamSchema } from "app/users/users.schemas.js";
 import { Permission } from "domain/auth/auth.constants.js";
 import { CreateUserPayloadSchema, UpdateUserPayloadSchema } from "domain/users/users.schemas.js";
-import { createUser } from "domain/users/users.services/create-user";
-import { deleteUser } from "domain/users/users.services/delete-user";
-import { getUser } from "domain/users/users.services/get-user";
-import { getUsers } from "domain/users/users.services/get-users";
-import { updateUser } from "domain/users/users.services/update-user";
+import { createUser } from "domain/users/users.services/create-user.js";
+import { deleteUser } from "domain/users/users.services/delete-user.js";
+import { getUser } from "domain/users/users.services/get-user.js";
+import { getUsers } from "domain/users/users.services/get-users.js";
+import { updateUser } from "domain/users/users.services/update-user.js";
 import { Hono } from "hono";
 import { validator } from "hono/validator";
-import type { EnvVariables } from "../@shared/types/env";
 
 export const users = new Hono<{ Variables: EnvVariables }>();
 

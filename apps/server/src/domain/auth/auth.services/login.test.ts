@@ -1,8 +1,8 @@
 import type { Database } from "better-sqlite3";
-import { getUserByCredentials } from "domain/users/users.services/get-user-by-credentials";
-import { login } from "./login";
+import { login } from "domain/auth/auth.services/login.js";
+import { getUserByCredentials } from "domain/users/users.services/get-user-by-credentials.js";
 
-jest.mock("../../users/users.services/get-user-by-credentials", () => ({
+jest.mock("../../users/users.services/get-user-by-credentials.js", () => ({
   getUserByCredentials: jest.fn(),
 }));
 

@@ -2,7 +2,7 @@ import { raiseForbidden, raiseServerError, raiseUnauthorized } from "app/@shared
 import type { EnvVariables } from "app/@shared/types/env.js";
 import { Permission } from "domain/auth/auth.constants.js";
 import type { TokenPayload, TokenUser } from "domain/auth/auth.types.js";
-import { getUserTokenExpirationTime } from "domain/users/users.services/get-user-token-expiration-time";
+import { getUserTokenExpirationTime } from "domain/users/users.services/get-user-token-expiration-time.js";
 import { createMiddleware } from "hono/factory";
 import { verify } from "hono/jwt";
 

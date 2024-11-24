@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import type { Database } from "better-sqlite3";
 import { createTestDb } from "db/create-test-db.js";
 import { insertUserPermissions } from "domain/@shared/utils/sql.js";
-import { getUserByCredentials } from "domain/users/users.services/get-user-by-credentials";
+import { getUserByCredentials } from "domain/users/users.services/get-user-by-credentials.js";
 
 describe("get-user-by-credentials", () => {
   let db: Database;

@@ -9,5 +9,6 @@ export const getUserTokenExpirationTime = (db: Database, userId: number) => {
   if (!result) {
     return null;
   }
-  return Math.ceil(new Date(result.token_expired_at).getTime() / 1000);
+
+  return Math.ceil(new Date(result.token_expired_at + "Z").getTime() / 1000);
 };

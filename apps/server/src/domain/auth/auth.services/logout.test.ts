@@ -1,6 +1,6 @@
 import type { Database } from "better-sqlite3";
-import { createTestDb } from "../../../db/create-test-db.js";
-import { logout } from "./logout.js";
+import { createTestDb } from "db/create-test-db.js";
+import { logout } from "domain/auth/auth.services/logout.js";
 
 describe("logout", () => {
   let db: Database;
