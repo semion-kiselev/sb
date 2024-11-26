@@ -11,9 +11,4 @@ export default [
   pluginJs.configs.recommended,
   ...tsEslint.configs.recommended,
   eslintConfigPrettier,
-  {
-    rules: {
-      ['@typescript-eslint/no-unused-vars']: 'warn'
-    }
-  }
 ];

@@ -8,7 +8,7 @@ import { logout } from "domain/auth/auth.services/logout.js";
 import { Hono } from "hono";
 import { sign } from "hono/jwt";
 import { validator } from "hono/validator";
-const a = 1;
+
 export const auth = new Hono<{ Variables: EnvVariables }>();
 
 auth.post(
