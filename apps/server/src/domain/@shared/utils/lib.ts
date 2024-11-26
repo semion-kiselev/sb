@@ -1,7 +1,7 @@
 export const omit = <T extends object>(entity: T, attrs: (keyof T)[]) =>
   Object.fromEntries(Object.entries(entity).filter(([key]) => !attrs.includes(key as keyof T)));
 
-export const capitalize = (value: string) => `${value[0].toUpperCase()}${value.slice(1)}`;
+const capitalize = (value: string) => `${value[0].toUpperCase()}${value.slice(1)}`;
 
 const valueToCamelCase = (value: string) => {
   if (!value.includes("_")) return value;

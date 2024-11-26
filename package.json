@@ -8,6 +8,7 @@
     "format": "turbo format",
     "ts": "turbo ts",
     "test": "turbo test",
+    "check-dead-code": "turbo check-dead-code",
     "prepare": "husky"
   },
   "devDependencies": {

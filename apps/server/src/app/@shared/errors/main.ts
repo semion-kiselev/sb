@@ -17,5 +17,5 @@ export const raiseBadRequest = (issues: Pick<ZodIssue, "path" | "message">[]) =>
 export const raiseUnauthorized = () => raiseHttpException(401);
 export const raiseForbidden = () => raiseHttpException(403);
 export const raiseNotFound = () => raiseHttpException(404);
-export const raiseConflict = () => raiseHttpException(409);
+// export const raiseConflict = () => raiseHttpException(409);
 export const raiseServerError = () => raiseHttpException(500);

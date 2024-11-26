@@ -12,6 +12,7 @@
     "lint": {},
     "format": {},
     "ts": {},
-    "test": {}
+    "test": {},
+    "check-dead-code": {}
   }
 }
