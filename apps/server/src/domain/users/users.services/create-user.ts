@@ -1,7 +1,7 @@
+import type { CreateUserPayload, UserFromDb } from "@repo/dto/main.js";
 import bcrypt from "bcrypt";
 import type { Database } from "better-sqlite3";
 import { insertUserPermissions } from "domain/@shared/utils/sql.js";
-import type { CreateUserPayload, UserFromDb } from "domain/users/users.types.js";
 import { normalizeUser } from "domain/users/users.utils.js";
 
 const createUserSql = `

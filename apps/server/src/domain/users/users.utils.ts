@@ -1,5 +1,5 @@
+import { type User, type UserWithPermissionsFromDb } from "@repo/dto/main.js";
 import { omit, toCamelCase } from "domain/@shared/utils/lib.js";
-import { type User, type UserWithPermissionsFromDb } from "domain/users/users.types.js";
 
 type NormalizeUserParams = {
   omitCredProps?: boolean;

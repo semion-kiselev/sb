@@ -1,10 +1,10 @@
+import type { TokenPayloadBase } from "@repo/dto/main.js";
+import { LoginSchema, LogoutSchema } from "@repo/dto/main.js";
 import { raiseServerError, raiseUnauthorized } from "app/@shared/errors/main.js";
 import type { EnvVariables } from "app/@shared/types/env.js";
 import { applyValidation } from "app/@shared/utils/apply-validation.js";
-import { LoginSchema, LogoutSchema } from "domain/auth/auth.schemas.js";
 import { login } from "domain/auth/auth.services/login.js";
 import { logout } from "domain/auth/auth.services/logout.js";
-import type { TokenPayloadBase } from "domain/auth/auth.types.js";
 import { Hono } from "hono";
 import { sign } from "hono/jwt";
 import { validator } from "hono/validator";

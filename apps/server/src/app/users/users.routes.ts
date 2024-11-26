@@ -1,10 +1,9 @@
+import { CreateUserPayloadSchema, Permission, UpdateUserPayloadSchema } from "@repo/dto/main.js";
 import { raiseNotFound } from "app/@shared/errors/main.js";
 import type { EnvVariables } from "app/@shared/types/env.js";
 import { applyValidation } from "app/@shared/utils/apply-validation.js";
 import { authGuard } from "app/auth/auth-guard.middleware.js";
 import { UserIdParamSchema } from "app/users/users.schemas.js";
-import { Permission } from "domain/auth/auth.constants.js";
-import { CreateUserPayloadSchema, UpdateUserPayloadSchema } from "domain/users/users.schemas.js";
 import { createUser } from "domain/users/users.services/create-user.js";
 import { deleteUser } from "domain/users/users.services/delete-user.js";
 import { getUser } from "domain/users/users.services/get-user.js";

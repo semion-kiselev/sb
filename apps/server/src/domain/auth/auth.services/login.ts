@@ -1,5 +1,5 @@
+import type { LoginPayload, TokenPayloadBase } from "@repo/dto/main.js";
 import type { Database } from "better-sqlite3";
-import type { LoginPayload, TokenPayloadBase } from "domain/auth/auth.types.js";
 import { getUserByCredentials } from "domain/users/users.services/get-user-by-credentials.js";
 
 export const login = async (

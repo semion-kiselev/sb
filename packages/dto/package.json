@@ -1,0 +1,8 @@
+{
+  "name": "@repo/dto",
+  "type": "module",
+  "main": "index.ts",
+  "dependencies": {
+    "zod": "3.23.8"
+  }
+}

@@ -1,5 +1,5 @@
+import type { LogoutPayload } from "@repo/dto/main.js";
 import type { Database } from "better-sqlite3";
-import type { LogoutPayload } from "domain/auth/auth.types.js";
 
 export const logout = (db: Database, { id }: LogoutPayload) => {
   db.prepare<number>(
