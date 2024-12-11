@@ -1,0 +1,35 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "",
+    "build": "",
+    "ts": "tsc --noEmit",
+    "format": "prettier 'src/**/*.{ts,tsx,json}' --check",
+    "format:fix": "prettier 'src/**/*.{ts,tsx,json}' --write",
+    "lint": "eslint 'src/**/*.{ts,tsx,json}'",
+    "lint:fix": "eslint 'src/**/*.{ts,tsx,json}' --fix"
+  },
+  "author": "Siamion Kisialiou",
+  "license": "ISC",
+  "dependencies": {
+    "@repo/dto": "workspace:*",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.2.0",
+    "@types/react": "19.0.1",
+    "@types/react-dom": "19.0.2",
+    "eslint": "9.15.0",
+    "eslint-config-prettier": "9.1.0",
+    "globals": "15.1.0",
+    "knip": "5.38.1",
+    "prettier": "3.2.5",
+    "prettier-plugin-organize-imports": "3.2.4",
+    "typescript": "5.4.5",
+    "typescript-eslint": "8.18.0"
+  }
+}
