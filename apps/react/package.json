@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "",
-    "build": "",
+    "dev": "rspack serve",
+    "build": "rspack build",
     "ts": "tsc --noEmit",
     "format": "prettier 'src/**/*.{ts,tsx,json}' --check",
     "format:fix": "prettier 'src/**/*.{ts,tsx,json}' --write",
@@ -15,12 +15,17 @@
   "license": "ISC",
   "dependencies": {
     "@repo/dto": "workspace:*",
+    "@tanstack/react-query": "5.62.8",
+    "ky": "1.7.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "wouter": "3.3.5",
     "zod": "3.23.8"
   },
   "devDependencies": {
     "@eslint/js": "9.2.0",
+    "@rspack/cli": "1.1.6",
+    "@rspack/core": "1.1.6",
     "@types/react": "19.0.1",
     "@types/react-dom": "19.0.2",
     "eslint": "9.15.0",
